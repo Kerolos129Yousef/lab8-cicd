@@ -35,5 +35,5 @@ jobs:
             cd ~/lab8-cicd
             git pull origin main
             docker compose pull
-            docker compose down
+            docker compose down -v
             docker compose up -d
