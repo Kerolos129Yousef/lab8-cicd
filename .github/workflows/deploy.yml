@@ -13,7 +13,6 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Login to Docker Hub
-        # This is the standard, secure way to login in a headless environment
         run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USER }}" --password-stdin
 
       - name: Build and Push
@@ -24,6 +23,7 @@ jobs:
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
+
     steps:
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@master
