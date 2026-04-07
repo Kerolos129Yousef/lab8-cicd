@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    image: kerolosyousef/lab6-app:v2
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URL=mongodb://db:27017/tasks
+    depends_on:
+      - db
+
+  db:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+      - ./init-db.js:/docker-entrypoint-initdb.d/init-db.js:ro
+
+volumes:
+  mongodb_data:
