@@ -8,7 +8,16 @@ This project automates the deployment of a Node.js application connected to a Mo
 - **App Service**: Node.js Express API.
 - **Database Service**: MongoDB for persistent storage.
 - **CI/CD**: Automated build, push to Docker Hub, and remote deployment to EC2 via SSH.
-
+  
+```mermaid
+graph LR
+  A[Local Code] -->|Git Push| B(GitHub Repo)
+  B -->|Trigger| C[GitHub Actions]
+  C -->|Build & Push| D[Docker Hub]
+  C -->|SSH Deploy| E[AWS EC2]
+  E -->|Pull Image| D
+  E -->|Run| F[Docker Compose: App + DB]
+```
 ## Key Features
 - [cite_start]**Database Persistence**: Uses MongoDB with named volumes to ensure data isn't lost on container restarts[cite: 22].
 - [cite_start]**Automated Seeding**: A custom initialization script (`init-db.js`) populates the database on the first start[cite: 21].
