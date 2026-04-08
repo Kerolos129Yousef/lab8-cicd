@@ -1,5 +1,6 @@
 # Multi-Container Deployment with CI/CD Pipeline 🚀
-
+### Deployment Status
+![GitHub Actions Pipeline](screenshots/pipeline.png)
 ## Project Overview
 This project automates the deployment of a Node.js application connected to a MongoDB database on an AWS EC2 instance. It uses **GitHub Actions** for CI/CD, **Docker Hub** as a container registry, and **Docker Compose** for multi-container orchestration.
 
